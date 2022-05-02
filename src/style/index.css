@@ -1,0 +1,240 @@
+@import url("./style.css");
+@import url("animation.css");
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+:root {
+  --body-color: #fefefe;
+  --main-color: #fff;
+  --text-color: #555;
+  --text-input-color: #777;
+  --text-disabled-color: #aaa;
+  --border-color: #eee;
+  --accent-color: #f2f2f2;
+  --editing-color: #fffeca;
+  --icon-opacity: 0.2;
+  --icon-opacity-hover: 0.5;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: "Nunito Sans", sans-serif;
+  background-color: var(--body-color);
+}
+
+main {
+  width: calc(100% - 2em);
+  max-width: 30em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  background-color: var(--main-color);
+}
+
+main > *,
+.list-container > * {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.list-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  min-width: 3em;
+  width: 3em;
+}
+
+.list-btn img {
+  width: 60%;
+  transition-property: opacity;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in;
+  opacity: var(--icon-opacity);
+}
+
+.list-btn:hover {
+  cursor: pointer;
+}
+
+.list-btn:hover img {
+  opacity: var(--icon-opacity-hover);
+}
+
+.head {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.head h1 {
+  font-size: 1.1em;
+  padding: 0.8em;
+  flex-grow: 1;
+  color: var(--text-color);
+}
+
+.footer button {
+  background-color: transparent;
+  border: none;
+  color: var(--unique-color);
+}
+
+.head button:hover {
+  cursor: pointer;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.form input {
+  font-size: 0.9em;
+  padding: 0.8em;
+  font-style: italic;
+  color: var(--text-color);
+  border: none;
+  flex-grow: 1;
+}
+
+.form input:active,
+.form input:focus {
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+.form .list-btn img {
+  width: 30%;
+  opacity: 1;
+}
+
+.list-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.list-container li {
+  display: flex;
+  align-items: center;
+  z-index: 1;
+  background-color: var(--main-color);
+  transition-property: background-color;
+  transition-timing-function: ease-in;
+  transition-duration: 0.2s;
+  overflow: hidden;
+}
+
+.list-container .checkbox {
+  padding: 0.8em;
+  margin-left: 0.8em;
+}
+
+.list-container li .description-input {
+  border: none;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1em;
+  background-color: transparent;
+  color: var(--text-color);
+}
+
+.list-container li .description,
+.list-container li .description-input {
+  color: var(--text-color);
+  font-size: 1em;
+  padding: 0.8em;
+  flex-grow: 1;
+  display: flex;
+}
+
+/* style when not editing */
+.list-container :not(.editing) .description input {
+  display: none;
+}
+
+.list-container :not(.editing) .del {
+  display: none;
+}
+
+.list-container li .description-input:focus,
+.list-container li .description-input:active {
+  border: none;
+  box-shadow: none;
+  outline: none;
+}
+
+.list-container .checkbox:checked + span {
+  text-decoration: line-through;
+  font-style: italic;
+  color: var(--text-disabled-color);
+}
+
+/* style when editing */
+
+.list-container .editing {
+  background-color: var(--editing-color);
+}
+
+.list-container .editing .description {
+  display: none;
+}
+
+.list-container .editing .description span {
+  display: none;
+}
+
+.list-container .editing .move {
+  display: none;
+}
+
+.footer {
+  width: 100%;
+  padding: 1em;
+  display: flex;
+  justify-content: center;
+  background-color: var(--accent-color);
+}
+
+.insert {
+  animation-name: insert;
+  animation-duration: 0.3s;
+}
+
+.insert-button {
+  animation-name: insert-reversed;
+  animation-duration: 0.3s;
+}
+
+.delete {
+  animation-name: delete;
+  animation-duration: 0.3s;
+}
+
+.footer button:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.footer .footer__p {
+  color: var(--text-color);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: space-between;
+}
