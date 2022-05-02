@@ -1,0 +1,40 @@
+@keyframes insert {
+  from {
+    opacity: 0;
+    transform: translateY(2em);
+    margin-top: -2.5em;
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    margin-top: 0;
+  }
+}
+
+@keyframes insert-reversed {
+  from {
+    opacity: 0;
+    transform: translateY(-2.5em);
+    margin-top: 0;
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes delete {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+    margin-top: 0;
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(-2.5em);
+    margin-top: -2.5em;
+  }
+}
